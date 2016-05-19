@@ -1,0 +1,18 @@
+aria:
+   #image: nginx
+   build : .
+   container_name: aria2c
+   ports:
+      - 6800:6800 
+      - 9100:8080
+   volumes:
+      - /home/rgomes/Downloads:/data
+webui:
+   image: nginx
+   container_name: aria2c-webui
+   ports:
+      - 9101:80
+   links:
+      - aria:aria
+   volumes:
+      - ./webui:/usr/share/nginx/html 
